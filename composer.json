@@ -1,0 +1,24 @@
+{
+  "name": "jshingre/pets2",
+  "authors": [
+    {
+      "name": "Jennifer Shin",
+      "email": "jshin13@mail.greenriver.edu"
+
+    },
+    {
+      "name": "Bessy Torres-Miller",
+      "email": "btorres-miller@mail.greenriver.edu"
+
+    },
+    {
+      "name": "Kianna Dyck",
+      "email": "kdyck@mail.greenriver.edu"
+
+    }
+
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
