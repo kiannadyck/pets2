@@ -6,6 +6,8 @@
  * Time: 10:36 AM
  */
 //require the autoload file
+session_start();
+
 require_once ('vendor/autoload.php');
 
 
@@ -21,7 +23,7 @@ $f3->route('GET /', function() {
 
 
    $view = new View();
-   echo $view -> render('views/home.hmtl');
+   echo $view -> render('views/home.html');
 }
 );
 
@@ -46,27 +48,31 @@ $f3->route('GET /pets/show/@type', function($f3,$params) {
 }
 );
 
-$f3->route('GET /pets/order', function() {
-    echo '<h1>Form 1</h1>'; //testing purposes
+$f3->route('GET /order', function() {
+    //echo '<h1>Form 1</h1>'; //testing purposes
 
-//    $view = new View();
-//    echo $view -> render('views/form1.hmtl');
+    $view = new View();
+    echo $view -> render('views/order.html');
 }
 );
 
-$f3->route('GET /pets/order2', function() {
-    echo '<h1>Form 2</h1>'; //testing purposes
+$f3->route('POST /order2/@animal', function($f3, $params)  {
+    //echo '<h1>Form 2</h1>'; //testing purposes
 
-//    $view = new View();
-//    echo $view -> render('views/form2.hmtl');
+    $f3->set('animal', $params['animal']);
+
+    $_SESSION['animal'] = $f3->get('animal');
+
+    $view = new View();
+    echo $view -> render('views/order2.html');
 }
 );
 
-$f3->route('GET /pets/results', function() {
-    echo '<h1>Results</h1>'; //testing purposes
+$f3->route('GET /results', function() {
+    //echo '<h1>Results</h1>'; //testing purposes
 
-//    $view = new View();
-//    echo $view -> render('views/results.hmtl');
+    $view = new View();
+    echo $view -> render('views/results.html');
 }
 );
 
