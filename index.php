@@ -78,10 +78,10 @@ $f3->route('POST /results', function($f3) {
     $f3->set('color', $_SESSION['color']);
 
 
-    $view = new View();
+    $view = new Template();
     echo $view -> render('views/results.html');
 
-    echo '<p>Thank you for ordering a '.$_SESSION['color'].' '.$_SESSION['animal'].'!</p>';
+    //echo '<p>Thank you for ordering a '.$_SESSION['color'].' '.$_SESSION['animal'].'!</p>';
 
 }
 );
