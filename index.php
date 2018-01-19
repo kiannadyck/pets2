@@ -56,10 +56,11 @@ $f3->route('GET /order', function() {
 }
 );
 
-$f3->route('GET /order2', function($f3, $params)  {
+$f3->route('POST /order2', function($f3)//, $params)  {
+{
     //echo '<h1>Form 2</h1>'; //testing purposes
 
-    $f3->set('animal', $params['animal']);
+    $f3->set('animal', $_POST['animal']);
 
     $_SESSION['animal'] = $f3->get('animal');
     echo $_SESSION['animal'];
@@ -69,11 +70,19 @@ $f3->route('GET /order2', function($f3, $params)  {
 }
 );
 
-$f3->route('POST /results', function() {
-    echo '<h1>You ordered a '.$_SESSION['animal'].'</h1>'; //testing purposes
+$f3->route('POST /results', function($f3) {
 
-    //$view = new View();
-    //echo $view -> render('views/results.html');
+    $_SESSION['color']= $_POST['color'];
+
+    $f3->set('animal', $_SESSION['animal']);
+    $f3->set('color', $_SESSION['color']);
+
+
+    $view = new View();
+    echo $view -> render('views/results.html');
+
+    echo '<p>Thank you for ordering a '.$_SESSION['color'].' '.$_SESSION['animal'].'!</p>';
+
 }
 );
 
