@@ -42,7 +42,7 @@ $f3->route('GET /pets/show/@type', function($f3,$params) {
             $f3->error(404);
 
             $view = new View();
-            echo $view->render('views/home.hmtl');
+            echo $view->render('views/home.html');
 
     }
 }
@@ -56,23 +56,24 @@ $f3->route('GET /order', function() {
 }
 );
 
-$f3->route('POST /order2/@animal', function($f3, $params)  {
+$f3->route('GET /order2', function($f3, $params)  {
     //echo '<h1>Form 2</h1>'; //testing purposes
 
     $f3->set('animal', $params['animal']);
 
     $_SESSION['animal'] = $f3->get('animal');
+    echo $_SESSION['animal'];
 
     $view = new View();
     echo $view -> render('views/order2.html');
 }
 );
 
-$f3->route('GET /results', function() {
-    //echo '<h1>Results</h1>'; //testing purposes
+$f3->route('POST /results', function() {
+    echo '<h1>You ordered a '.$_SESSION['animal'].'</h1>'; //testing purposes
 
-    $view = new View();
-    echo $view -> render('views/results.html');
+    //$view = new View();
+    //echo $view -> render('views/results.html');
 }
 );
 
